@@ -1,0 +1,15 @@
+{
+  "name": "rpi-weather",
+  "version": "1.0.0",
+  "description": "NodeJS app that reads Raspberry PI Temperature and Humidity sensor values",
+  "main": "index.js",
+  "repository": "git@github.com:gutierrezjav/rpi-weather.git",
+  "author": "Javier Gutierrez <j.gtrez@gmail.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "node-dht-sensor": "^0.4.3"
+  },
+  "scripts": {
+    "start": "node read-sensor.js"
+  }
+}
