@@ -7,9 +7,11 @@
   "author": "Javier Gutierrez <j.gtrez@gmail.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "mongodb": "^5.0.0",
     "node-dht-sensor": "^0.4.3"
   },
   "scripts": {
     "start": "node read-sensor.js"
-  }
+  },
+  "engines": { "node": ">=14.20.1"}
 }
