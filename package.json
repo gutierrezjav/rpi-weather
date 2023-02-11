@@ -11,7 +11,8 @@
     "node-dht-sensor": "^0.4.3"
   },
   "scripts": {
-    "start": "node read-sensor.js"
+    "start": "node read-sensor.js",
+    "start:nohup": "nohup yarn start &"
   },
   "engines": { "node": ">=14.20.1"}
 }
