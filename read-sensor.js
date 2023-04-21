@@ -1,4 +1,5 @@
 "use strict";
+const https = require("node:https");
 const sensor = require("node-dht-sensor");
 const { MongoClient } = require("mongodb");
 const conf = require("./config.json");
@@ -58,6 +59,13 @@ async function writeToDb(temp, humidity) {
     );
 }
 
+async function writeToIFTTT(temp, humidity) {
+    const url = conf.iftt.url + `?value1=${temp}&value2=${humidity}`;
+    https.get(url, (res) => {
+        console.log("Info sent to IFTTT");
+    });
+}
+
 
 async function cleanup() {
     console.log("Cleaning up...")
@@ -73,6 +81,7 @@ function readSensor() {
             humidity = Math.round(humidity * 100) / 100;
             console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
             writeToDb(temperature, humidity);
+            writeToIFTTT(temperature, humidity);
         }
     });
 }
