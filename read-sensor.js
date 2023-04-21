@@ -4,7 +4,7 @@ const sensor = require("node-dht-sensor");
 const { MongoClient } = require("mongodb");
 const conf = require("./config.json");
 
-const READ_INTERVAL = 60*15; //in seconds
+const READ_INTERVAL_MINUTES = 30;
 let intervalID;
 
 const uri = `mongodb+srv://${conf.db.username}:${conf.db.password}@${conf.db.host}/?retryWrites=true&w=majority`;
@@ -17,8 +17,8 @@ process.on('SIGINT', cleanup);
 console.log("Configuring the DB connection")
 initMongo(mongo).then(() => {
 
-    console.log(`Reading temperature and humidity every ${READ_INTERVAL} seconds.`)
-    intervalID = setInterval(readSensor, READ_INTERVAL * 1000);
+    console.log(`Reading temperature and humidity every ${READ_INTERVAL_MINUTES} minutes.`)
+    intervalID = setInterval(readSensor, READ_INTERVAL_MINUTES * 60 * 1000);
     readSensor();
 
 })
