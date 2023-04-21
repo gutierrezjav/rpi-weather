@@ -12,7 +12,8 @@
   },
   "scripts": {
     "start": "node read-sensor.js",
-    "start:nohup": "nohup yarn start &"
+    "start:nohup": "rm nohup.out && nohup yarn start &",
+    "stop": "kill $(ps aux | grep 'read-sensor.js' | awk '{print $2}')"
   },
   "engines": { "node": ">=14.20.1"}
 }
